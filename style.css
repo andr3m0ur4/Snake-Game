@@ -12,3 +12,12 @@ body {
 h1 {
     text-transform: uppercase;
 }
+
+canvas {
+    border: 40px solid transparent;
+    border-image: url(./image/block.png) 46 / 40px round;
+}
+
+a {
+    text-decoration: none;
+}

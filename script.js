@@ -10,7 +10,8 @@ let direction = 'right'
 
 const food = {
     x: Math.floor(Math.random() * 15 + 1) * box,
-    y: Math.floor(Math.random() * 15 + 1) * box
+    y: Math.floor(Math.random() * 15 + 1) * box,
+    cor: 'orange'
 }
 
 function criarBG() {
@@ -25,8 +26,24 @@ function criarCobrinha() {
     }
 }
 
+function escolherCor() {
+    let numero = Math.floor(Math.random() * 10 + 1)
+    switch (numero) {
+        case 1: return 'crimson'
+        case 2: return 'yellow'
+        case 3: return 'lime'
+        case 4: return 'tomato'
+        case 5: return 'chocolate'
+        case 6: return 'orangered'
+        case 7: return 'olive'
+        case 8: return 'forestgreen'
+        case 9: return 'salmon'
+        case 10: return 'magenta'
+    }
+}
+
 function drawFood() {
-    context.fillStyle = 'green'
+    context.fillStyle = food.cor
     context.fillRect(food.x, food.y, box, box)
 }
 
@@ -48,7 +65,7 @@ function iniciarJogo() {
     for (let i = 1; i < snake.length; i++) {
         if (snake[0].x == snake[i].x && snake[0].y == snake[i].y) {
             clearInterval(jogo)
-            alert('Game Over :(')
+            $('#modal').modal()
         }
     }
 
@@ -69,6 +86,7 @@ function iniciarJogo() {
     } else {
         food.x = Math.floor(Math.random() * 15 + 1) * box
         food.y = Math.floor(Math.random() * 15 + 1) * box
+        food.cor = escolherCor()
     }
 
     const newHead = {
@@ -80,3 +98,5 @@ function iniciarJogo() {
 }
 
 const jogo = setInterval(iniciarJogo, 100)
+
+$('#modal a').click(() => location.href = location.href)
