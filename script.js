@@ -26,7 +26,7 @@ function criarCobrinha() {
 }
 
 function drawFood() {
-    context.fillStyle = 'red'
+    context.fillStyle = 'green'
     context.fillRect(food.x, food.y, box, box)
 }
 
@@ -51,7 +51,7 @@ function iniciarJogo() {
             alert('Game Over :(')
         }
     }
-    
+
     criarBG()
     criarCobrinha()
     drawFood()
